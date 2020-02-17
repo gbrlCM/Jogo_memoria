@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://card.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main.gd" type="Script" id=2]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=3]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 75.3462, 24.3767 )
+script = ExtResource( 2 )
+Cards = ExtResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="cards_container" type="Node2D" parent="."]
+
+[node name="HUD" parent="." instance=ExtResource( 3 )]
+[connection signal="no_cards" from="." to="." method="_on_Node2D_no_cards"]
+[connection signal="timeout" from="Timer" to="." method="timer_plus_plus"]

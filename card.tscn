@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/Placeholder/b_2.png" type="Texture" id=1]
+[ext_resource path="res://assets/Placeholder/back.png" type="Texture" id=2]
+[ext_resource path="res://assets/Placeholder/c_2.png" type="Texture" id=3]
+[ext_resource path="res://assets/Placeholder/c_1.png" type="Texture" id=4]
+[ext_resource path="res://assets/Placeholder/b_1.png" type="Texture" id=5]
+[ext_resource path="res://assets/Placeholder/a_2.png" type="Texture" id=6]
+[ext_resource path="res://assets/Placeholder/a_1.png" type="Texture" id=7]
+[ext_resource path="res://card.gd" type="Script" id=8]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 255.053, 256.579 )
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "A2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "B1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "C2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "C1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "A1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "B2",
+"speed": 5.0
+} ]
+
+[node name="Card" type="Node2D"]
+position = Vector2( 265.226, 172.704 )
+scale = Vector2( 0.3, 0.3 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "Back"
+
+[node name="Tween" type="Tween" parent="."]
+[connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
